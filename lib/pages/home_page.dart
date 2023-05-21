@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/components/page_row.dart';
-import 'package:portfolio/pages/about_page.dart';
-import 'package:portfolio/components/colored_button.dart';
+
 import 'package:portfolio/components/media_button.dart';
 import 'package:portfolio/cards/picture_hover.dart';
-import 'package:portfolio/pages/page_state.dart';
-import 'package:portfolio/pages/project_page.dart';
-import 'package:portfolio/pages/resume_page.dart';
+
 import 'package:portfolio/text-components/name_text.dart';
-import 'package:provider/provider.dart';
+
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -59,7 +56,10 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ], fontSize: 20, color: Colors.white),
                     ),
-                    PageRow(),
+                    const PageRow(),
+                    const SizedBox(
+                      height: 10,
+                    ),
                     Row(
                       children: [
                         MediaButton(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/components/page_button.dart';
+import 'package:portfolio/pages/contact_page.dart';
 import 'package:portfolio/pages/home_page.dart';
 import 'package:provider/provider.dart';
 
@@ -7,9 +8,10 @@ import '../pages/about_page.dart';
 import '../pages/page_state.dart';
 import '../pages/project_page.dart';
 import '../pages/resume_page.dart';
-import 'colored_button.dart';
 
 class PageRow extends StatelessWidget {
+  const PageRow({super.key});
+
   @override
   Widget build(BuildContext context) {
     final pageState = Provider.of<PageState>(context);
@@ -64,6 +66,10 @@ class PageRow extends StatelessWidget {
           currentPage: CurrentPage.Contact,
           onPressed: () {
             pageState.setCurrentPage(CurrentPage.Contact);
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const ContactPage()),
+            );
           },
         ),
       ],

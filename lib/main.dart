@@ -5,13 +5,7 @@ import 'package:portfolio/pages/page_state.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'dart:html' as html;
-
-Color colorLightGrey = const Color(0xFF292C33).withOpacity(0.7);
-Color colorDarkGrey = const Color(0xFF191919);
-
-Color primaryColor = const Color(0xFF292C33).withOpacity(0.4);
-
-Color colorGrey = const Color(0xFF6B6A69).withOpacity(0.4);
+import 'constants.dart';
 
 void main() {
   html.window.onPopState.listen((event) {
@@ -40,6 +34,7 @@ class Portfolio extends StatelessWidget {
           ResponsiveBreakpoint.autoScale(1700, name: 'XL'),
         ],
       ),
+      initialRoute: '/',
       scrollBehavior: const MaterialScrollBehavior().copyWith(
         dragDevices: {
           PointerDeviceKind.mouse,
@@ -52,7 +47,10 @@ class Portfolio extends StatelessWidget {
         primaryColor: primaryColor,
       ),
       debugShowCheckedModeBanner: false,
-      home: const HomePage(),
+      //home: const HomePage(),
+      routes: {
+        '/': (context) => const HomePage(),
+      },
     );
   }
 }

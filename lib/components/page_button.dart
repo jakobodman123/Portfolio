@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:portfolio/main.dart';
+
 import 'package:provider/provider.dart';
 
+import '../constants.dart';
 import '../pages/page_state.dart';
 
 class PageButton extends StatefulWidget {
@@ -16,6 +16,7 @@ class PageButton extends StatefulWidget {
       required this.text,
       required this.currentPage});
 
+  @override
   PageButtonState createState() => PageButtonState();
 }
 
@@ -25,7 +26,9 @@ class PageButtonState extends State<PageButton> {
   Widget build(BuildContext context) {
     final pageState = Provider.of<PageState>(context);
     return InkWell(
-      onTap: widget.onPressed,
+      onTap: pageState.currentPage == widget.currentPage
+          ? () {}
+          : widget.onPressed,
       onHover: (value) {
         setState(() {
           isHovered = value;

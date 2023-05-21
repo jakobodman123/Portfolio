@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:portfolio/main.dart';
+
+import '../constants.dart';
 
 class MediaButton extends StatefulWidget {
   final IconData icon;
@@ -23,7 +24,7 @@ class MediaButtonState extends State<MediaButton> {
           });
         },
         child: Padding(
-          padding: const EdgeInsets.only(top: 10, right: 5),
+          padding: const EdgeInsets.only(right: 5, bottom: 5, left: 5),
           child: Container(
             width: 30,
             height: 30,

@@ -4,8 +4,10 @@ import 'package:flutter/widgets.dart';
 class PostTitle extends StatelessWidget {
   final String text;
   final bool bold;
+  final double fontSize;
 
-  const PostTitle({super.key, required this.text, this.bold = true});
+  const PostTitle(
+      {super.key, required this.text, this.bold = true, this.fontSize = 18});
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -21,7 +23,7 @@ class PostTitle extends StatelessWidget {
               ),
             ],
             fontWeight: bold ? FontWeight.bold : null,
-            fontSize: 18,
+            fontSize: fontSize,
             color: Colors.green),
       ),
     );
