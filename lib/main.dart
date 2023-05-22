@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:portfolio/pages/home_page.dart';
-import 'package:portfolio/pages/page_state.dart';
+import 'package:portfolio/pages/notifier.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'dart:html' as html;
@@ -13,7 +13,7 @@ void main() {
   });
   runApp(
     ChangeNotifierProvider(
-      create: (context) => PageState(),
+      create: (context) => Notifier(),
       child: const Portfolio(),
     ),
   );

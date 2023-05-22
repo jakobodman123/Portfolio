@@ -1,24 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio/components/media_button.dart';
-import 'package:portfolio/page_structure.dart';
+import 'package:portfolio/sections/page_structure.dart';
 import 'package:portfolio/text-components/post_title.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../components/contact_card.dart';
 import '../text-components/sub_title.dart';
 import '../text-components/title.dart';
+import 'notifier.dart';
 
 class ContactPage extends StatelessWidget {
   const ContactPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final selectedLanguage =
+        Provider.of<Notifier>(context, listen: false).selectedLanguage;
     return PageStructure(
       column: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SubTitle(text: "Contact"),
-          const TitleText(title: "Get In Touch"),
+          TitleText(
+              title:
+                  selectedLanguage == "eng" ? "Get In Touch" : "Kontakta mig"),
           Padding(
             padding: const EdgeInsets.fromLTRB(10, 3, 0, 20),
             child: Align(

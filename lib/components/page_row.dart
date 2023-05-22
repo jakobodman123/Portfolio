@@ -5,7 +5,7 @@ import 'package:portfolio/pages/home_page.dart';
 import 'package:provider/provider.dart';
 
 import '../pages/about_page.dart';
-import '../pages/page_state.dart';
+import '../pages/notifier.dart';
 import '../pages/project_page.dart';
 import '../pages/resume_page.dart';
 
@@ -14,7 +14,7 @@ class PageRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final pageState = Provider.of<PageState>(context);
+    final pageState = Provider.of<Notifier>(context);
     return Row(
       children: [
         PageButton(

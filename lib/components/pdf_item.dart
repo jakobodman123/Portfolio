@@ -4,7 +4,10 @@ import 'package:portfolio/text-components/post_title.dart';
 import 'package:flutter/services.dart';
 import 'dart:html' as html;
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:provider/provider.dart';
 import 'dart:convert';
+
+import '../pages/notifier.dart';
 
 class PDFItem extends StatelessWidget {
   final String lang;
@@ -24,6 +27,8 @@ class PDFItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final selectedLanguage =
+        Provider.of<Notifier>(context, listen: false).selectedLanguage;
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -36,7 +41,9 @@ class PDFItem extends StatelessWidget {
             child: Row(
               children: [
                 PostTitle(
-                  text: "Click here to download($lang) ",
+                  text: selectedLanguage == "eng"
+                      ? "Click here to download"
+                      : "Klicka här för att ladda ner",
                   bold: false,
                 ),
                 const FaIcon(

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../constants.dart';
-import '../pages/page_state.dart';
+import '../pages/notifier.dart';
 
 class PageButton extends StatefulWidget {
   final VoidCallback onPressed;
@@ -24,7 +24,7 @@ class PageButtonState extends State<PageButton> {
   bool isHovered = false;
   @override
   Widget build(BuildContext context) {
-    final pageState = Provider.of<PageState>(context);
+    final pageState = Provider.of<Notifier>(context);
     return InkWell(
       onTap: pageState.currentPage == widget.currentPage
           ? () {}

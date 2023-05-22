@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 
 enum CurrentPage { Home, About, Resume, Projects, Contact }
 
-class PageState extends ChangeNotifier {
+class Notifier extends ChangeNotifier {
+  String _selectedLanguage = 'eng';
+
+  String get selectedLanguage => _selectedLanguage;
   CurrentPage _currentPage = CurrentPage.Home;
 
   CurrentPage get currentPage => _currentPage;
@@ -12,5 +15,10 @@ class PageState extends ChangeNotifier {
       _currentPage = page;
       notifyListeners();
     }
+  }
+
+  void setSelectedLanguage(String language) {
+    _selectedLanguage = language;
+    notifyListeners();
   }
 }

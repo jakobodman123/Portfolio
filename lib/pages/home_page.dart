@@ -5,10 +5,14 @@ import 'package:portfolio/components/media_button.dart';
 import 'package:portfolio/cards/picture_hover.dart';
 
 import 'package:portfolio/text-components/name_text.dart';
+import 'package:provider/provider.dart';
 
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../components/language_button.dart';
+import 'notifier.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -18,9 +22,34 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  void updateSelectedLanguage(String language) {
+    setState(() {
+      Provider.of<Notifier>(context, listen: false)
+          .setSelectedLanguage(language);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    final notifier = Provider.of<Notifier>(context, listen: false);
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        actions: [
+          LanguageButton(
+            iconPath: 'assets/swePic.png',
+            isSelected: notifier.selectedLanguage == 'swe',
+            onPressed: () => updateSelectedLanguage("swe"),
+          ),
+          LanguageButton(
+            iconPath: 'assets/engPic.png',
+            isSelected: notifier.selectedLanguage == 'eng',
+            onPressed: () => updateSelectedLanguage("eng"),
+          ),
+        ],
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
@@ -46,9 +75,11 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const NameText(),
-                    const Text(
-                      "Film/Game Enthusiast and Junior Full-Stack Developer",
-                      style: TextStyle(shadows: [
+                    Text(
+                      notifier.selectedLanguage == "eng"
+                          ? "Junior Full-Stack Developer and Film/Game Enthusiast"
+                          : "Junior Full-Stack Utvecklare och Film/Spel entusiast",
+                      style: const TextStyle(shadows: [
                         Shadow(
                           blurRadius: 2.0,
                           color: Colors.black,

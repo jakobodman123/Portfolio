@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio/cards/feat_card.dart';
+import 'package:provider/provider.dart';
+
+import '../pages/notifier.dart';
 
 class Feats extends StatelessWidget {
   const Feats({
@@ -9,8 +12,10 @@ class Feats extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.fromLTRB(10, 3, 0, 20),
+    final selectedLanguage =
+        Provider.of<Notifier>(context, listen: false).selectedLanguage;
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(10, 3, 0, 20),
       child: Align(
         alignment: Alignment.center,
         child: Wrap(
@@ -21,15 +26,21 @@ class Feats extends StatelessWidget {
             FeatCard(
                 icon: FontAwesomeIcons.hourglass,
                 title: "5",
-                content: "Years within IT"),
+                content: selectedLanguage == "eng"
+                    ? "Years within IT"
+                    : "År inom IT"),
             FeatCard(
                 icon: FontAwesomeIcons.book,
                 title: "4",
-                content: "Documented Projects"),
+                content: selectedLanguage == "eng"
+                    ? "Documented Projects"
+                    : "Dokumenterad Projekt"),
             FeatCard(
                 icon: FontAwesomeIcons.language,
-                title: "7",
-                content: "Fluent Programming Languages"),
+                title: "6",
+                content: selectedLanguage == "eng"
+                    ? "Fluent Programming Languages"
+                    : "Flytande Programmeringspråk"),
           ],
         ),
       ),
