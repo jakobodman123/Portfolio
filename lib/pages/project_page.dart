@@ -20,7 +20,7 @@ class ProjectPage extends StatelessWidget {
       column: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SubTitle(text: "Projects"),
+          SubTitle(text: selectedLanguage == "eng" ? "Projects" : "Projekt"),
           TitleText(
               title:
                   selectedLanguage == "eng" ? "My Projects" : "Mina Projekt"),

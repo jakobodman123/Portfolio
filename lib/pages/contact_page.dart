@@ -1,3 +1,4 @@
+import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio/components/media_button.dart';
@@ -21,7 +22,7 @@ class ContactPage extends StatelessWidget {
       column: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SubTitle(text: "Contact"),
+          SubTitle(text: selectedLanguage == "eng" ? "Contact" : "Kontakt"),
           TitleText(
               title:
                   selectedLanguage == "eng" ? "Get In Touch" : "Kontakta mig"),
@@ -33,22 +34,56 @@ class ContactPage extends StatelessWidget {
                 runSpacing: 15,
                 spacing: 10,
                 children: [
-                  const ContactCard(
+                  ContactCard(
                     leadingIcon: FontAwesomeIcons.envelope,
                     title: "Email Me",
-                    content: PostTitle(
-                      text: "jakobodman1997@gmail.com",
-                      fontSize: 12,
-                      bold: false,
+                    content: InkWell(
+                      onTap: () {
+                        String textToCopy = "jakobodman1997@gmail.com";
+                        FlutterClipboard.copy(textToCopy).then((value) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content: Text('Copied to clipboard')),
+                          );
+                        });
+                      },
+                      child: const Tooltip(
+                        richMessage: TextSpan(
+                          text: "Copy To Clipboard",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        child: PostTitle(
+                          text: "jakobodman1997@gmail.com",
+                          fontSize: 12,
+                          bold: false,
+                        ),
+                      ),
                     ),
                   ),
-                  const ContactCard(
+                  ContactCard(
                     leadingIcon: FontAwesomeIcons.phone,
                     title: "Call Me",
-                    content: PostTitle(
-                      text: "0763085859",
-                      fontSize: 12,
-                      bold: false,
+                    content: InkWell(
+                      onTap: () {
+                        String textToCopy = "0763085859";
+                        FlutterClipboard.copy(textToCopy).then((value) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content: Text('Copied to clipboard')),
+                          );
+                        });
+                      },
+                      child: const Tooltip(
+                        richMessage: TextSpan(
+                          text: "Copy To Clipboard",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        child: PostTitle(
+                          text: "0763085859",
+                          fontSize: 12,
+                          bold: false,
+                        ),
+                      ),
                     ),
                   ),
                   ContactCard(

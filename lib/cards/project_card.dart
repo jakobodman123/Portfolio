@@ -29,7 +29,7 @@ class ProjectCard extends StatefulWidget {
 }
 
 class ProjectCardState extends State<ProjectCard> {
-  PageController _pageController = PageController();
+  final PageController _pageController = PageController();
   int _currentPage = 0;
   Timer? _timer;
 
@@ -64,15 +64,16 @@ class ProjectCardState extends State<ProjectCard> {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
     return SizedBox(
-      width: 400,
+      width: screenWidth < 600 ? 400 : 350,
       height: 300,
       child: Card(
           color: primaryColor,
           child: Row(
             children: [
               SizedBox(
-                width: 200,
+                width: screenWidth < 600 ? 200 : 175,
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -99,7 +100,7 @@ class ProjectCardState extends State<ProjectCard> {
                           widget.demoUrl != ""
                               ? ColoredButton(
                                   text: "Demo",
-                                  width: 80,
+                                  width: 70,
                                   height: 30,
                                   onPressed: () {
                                     launchUrl(Uri.parse(widget.demoUrl));
@@ -112,7 +113,7 @@ class ProjectCardState extends State<ProjectCard> {
                     ]),
               ),
               SizedBox(
-                width: 190,
+                width: screenWidth < 600 ? 190 : 165,
                 height: 300,
                 child: GestureDetector(
                   onHorizontalDragEnd: (DragEndDetails details) {

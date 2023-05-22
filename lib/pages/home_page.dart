@@ -35,6 +35,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         actions: [
           LanguageButton(
             iconPath: 'assets/swePic.png',

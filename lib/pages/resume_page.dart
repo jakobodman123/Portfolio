@@ -18,7 +18,7 @@ class ResumePage extends StatelessWidget {
       column: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SubTitle(text: "Resume"),
+          SubTitle(text: selectedLanguage == "eng" ? "Resume" : "CV"),
           TitleText(
               title: selectedLanguage == "eng"
                   ? "Check My Resume"

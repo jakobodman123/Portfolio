@@ -23,7 +23,7 @@ class AboutPage extends StatelessWidget {
       column: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SubTitle(text: "About"),
+          SubTitle(text: selectedLanguage == "eng" ? "About" : "Om mig"),
           TitleText(
               title: selectedLanguage == "eng" ? "Who Am I?" : "Vem är jag?"),
           PostTitle(

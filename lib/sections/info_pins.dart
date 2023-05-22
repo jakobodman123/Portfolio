@@ -31,7 +31,7 @@ class InfoPins extends StatelessWidget {
             ],
           ),
           const SizedBox(
-            width: 50,
+            width: 10,
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,

@@ -15,10 +15,12 @@ class PageRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final pageState = Provider.of<Notifier>(context);
+    final selectedLanguage =
+        Provider.of<Notifier>(context, listen: false).selectedLanguage;
     return Row(
       children: [
         PageButton(
-          text: "Home",
+          text: selectedLanguage == "eng" ? "Home" : "Hem",
           currentPage: CurrentPage.Home,
           onPressed: () {
             pageState.setCurrentPage(CurrentPage.Home);
@@ -29,7 +31,7 @@ class PageRow extends StatelessWidget {
           },
         ),
         PageButton(
-          text: "About",
+          text: selectedLanguage == "eng" ? "About" : "Om mig",
           currentPage: CurrentPage.About,
           onPressed: () {
             pageState.setCurrentPage(CurrentPage.About);
@@ -40,7 +42,7 @@ class PageRow extends StatelessWidget {
           },
         ),
         PageButton(
-          text: "Resume",
+          text: selectedLanguage == "eng" ? "Resume" : "CV",
           currentPage: CurrentPage.Resume,
           onPressed: () {
             pageState.setCurrentPage(CurrentPage.Resume);
@@ -51,7 +53,7 @@ class PageRow extends StatelessWidget {
           },
         ),
         PageButton(
-          text: "Projects",
+          text: selectedLanguage == "eng" ? "Projects" : "Projekt",
           currentPage: CurrentPage.Projects,
           onPressed: () {
             pageState.setCurrentPage(CurrentPage.Projects);
@@ -62,7 +64,7 @@ class PageRow extends StatelessWidget {
           },
         ),
         PageButton(
-          text: "Contact",
+          text: selectedLanguage == "eng" ? "Contact" : "Kontakt",
           currentPage: CurrentPage.Contact,
           onPressed: () {
             pageState.setCurrentPage(CurrentPage.Contact);
